@@ -81,7 +81,7 @@ public class UserResource
 	}
 	
 	
-	
+	//Resource for deleting a user
 	@DELETE
 	@Path("user/{userID}")
 	public User deleteUser(@PathParam("userID") int userID)
@@ -99,10 +99,6 @@ public class UserResource
 		
 		return user;
 	}
-	
-	
-	
-	
 	
 	
 }
