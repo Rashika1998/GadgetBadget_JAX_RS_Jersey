@@ -103,11 +103,9 @@ public class UserRepository
 	}
 
 
-	public void createUser(User user) {
-		// TODO Auto-generated method stub
-
+	public void createUser(User user) 
+	{
 		String sql = "INSERT INTO user VALUES(? , ? , ? , ? , ? , ? , ?)";
-		
 		
 		try 
 		{
@@ -123,7 +121,52 @@ public class UserRepository
 			
 			st.executeUpdate();
 			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error " + e);
+		}
+	}
+	
+	
+	
+	public void updateUser(User user) 
+	{
+		String sql = "UPDATE user SET userProfileName = ? , bio = ? , dob = ? , email = ? , username = ? , password = ? WHERE userID = ?";
+		
+		try 
+		{
+			PreparedStatement st = con.prepareStatement(sql);
 			
+			
+			st.setString(1, user.getUserProfileName());
+			st.setString(2, user.getBio());
+			st.setString(3, user.getDob());
+			st.setString(4, user.getEmail());
+			st.setString(5, user.getUsername());
+			st.setString(6, user.getPassword());
+			st.setInt(7, user.getUserID());
+			
+			st.executeUpdate();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error " + e);
+		}
+	}
+
+
+	public void deleteUser(int userID) 
+	{
+
+		String sql = "DELETE FROM user WHERE userID = ?";
+		
+		try 
+		{
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1 , userID);
+			st.executeUpdate();
 			
 		}
 		catch(Exception e)

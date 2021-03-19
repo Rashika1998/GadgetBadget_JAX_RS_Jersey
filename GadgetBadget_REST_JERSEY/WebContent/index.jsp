@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>GadgetBadget JAX/RS REST_JERSEY</title>
 </head>
 <body>
 
@@ -12,14 +12,15 @@
 	<p>Project Initialization</p>
 	<p>get all users : http://localhost:9002/GadgetBadget_REST_JERSEY/myService/users</p>
 	<p>get Unique user : http://localhost:9002/GadgetBadget_REST_JERSEY/myService/users/user/userID</p>
-	
+	<p>GET request</p>
+	<p>No Body</p>
 	<br>
 	<br>
 	<br>
 	
 	<p>Insert To The MySql Database : http://localhost:9002/GadgetBadget_REST_JERSEY/myService/users/user</p>
-	
-	
+	<p>POST request</p>
+	<p>Create Body</p>
 	<!-- 
 	<user>
 	    <userID>ID</userID>
@@ -32,6 +33,24 @@
 	</user> 
 	-->
 	
+	<p>Update in The MySql Database : http://localhost:9002/GadgetBadget_REST_JERSEY/myService/users/user</p>
+	<p>PUT request</p>
+	<p>Create Body</p>
+	<!-- 
+	<user>
+	    <userID>ID</userID>
+	    <userProfileName>Profile name</userProfileName>
+	    <bio>Bio</bio>
+	    <dob>Dob</dob>
+	    <email>email</email>
+	    <username>username</username>
+	    <password>password</password>
+	</user> 
+	-->
+	
+	<p>Update in The MySql Database : http://localhost:9002/GadgetBadget_REST_JERSEY/myService/users/user/userID</p>
+	<p>DELETE request</p>
+	<p>No Body</p>
 	
 </body>
 </html>
