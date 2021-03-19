@@ -1,4 +1,4 @@
-package com.GadgetBadget.user;
+package com.gadget_badget.users.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -8,6 +8,7 @@ public class User {
 	private String userProfileName;
 	private String bio;
 	private String dob;
+	private String email;
 	
 	private String username;
 	private String password;
@@ -48,10 +49,17 @@ public class User {
 		this.password = password;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", userProfileName=" + userProfileName + ", bio=" + bio + ", dob=" + dob
-				+ ", username=" + username + ", password=" + password + "]";
+				+ ", email=" + email + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	
