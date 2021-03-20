@@ -44,9 +44,11 @@ public class ProjectService
 		 @FormParam("projectName") String projectName, 
 		 @FormParam("projectDesc") String projectDesc, 
 		 @FormParam("projectDevBy") String projectDevBy,
-		 @FormParam("projectPrice") String projectPrice) 
+		 @FormParam("projectPrice") String projectPrice,
+		 @FormParam("projectCategory") String projectCategory,
+		 @FormParam("projectServiceCharge") String projectServiceCharge) 
 	{ 
-		String output = projectObj.insertProject(projectCode, projectName, projectDesc, projectDevBy, projectPrice); 
+		String output = projectObj.insertProject(projectCode, projectName, projectDesc, projectDevBy, projectPrice, projectCategory, projectServiceCharge); 
 		return output; 
 	}
 	
@@ -69,7 +71,9 @@ public class ProjectService
 		 String projectDesc = projectObject.get("projectDesc").getAsString(); 
 		 String projectDevBy = projectObject.get("projectDevBy").getAsString(); 
 		 String projectPrice = projectObject.get("projectPrice").getAsString(); 
-		 String output = projectObj.updateProject(projectID, projectCode, projectName, projectDesc, projectDevBy, projectPrice); 
+		 String projectCategory = projectObject.get("projectCategory").getAsString(); 
+		 String projectServiceCharge = projectObject.get("projectServiceCharge").getAsString(); 
+		 String output = projectObj.updateProject(projectID, projectCode, projectName, projectDesc, projectDevBy, projectPrice, projectCategory, projectServiceCharge); 
 		 return output; 
 	}
 	
