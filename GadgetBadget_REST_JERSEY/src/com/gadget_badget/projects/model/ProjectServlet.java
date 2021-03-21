@@ -57,7 +57,7 @@ public class ProjectServlet
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while inserting the project..!."; 
+				 output = "Error while inserting the project details..!."; 
 				 System.err.println(e.getMessage()); 
 			 } 
 		 	return output; 
@@ -156,11 +156,11 @@ public class ProjectServlet
 				 // execute the statement
 				 preparedStmt.execute(); 
 				 con.close(); 
-				 output = "Updated successfully"; 
+				 output = "Project details have been updated successfully...!"; 
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while updating the item."; 
+				 output = "Error while updating project details...!"; 
 				 System.err.println(e.getMessage()); 
 			 } 
 			 	return output; 
@@ -187,11 +187,11 @@ public class ProjectServlet
 				 // execute the statement
 				 preparedStmt.execute(); 
 				 con.close(); 
-				 output = "Deleted successfully"; 
+				 output = "Project has been deleted successfully"; 
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while deleting the project details."; 
+				 output = "Error while deleting the project from the database."; 
 				 System.err.println(e.getMessage()); 
 			 } 
 			 return output; 
