@@ -119,7 +119,7 @@ public class EmployeeServlet
 				 {return "Error while connecting to the database for reading."; } 
 				 // Prepare the html table to be displayed
 				 
-				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<table border='1' style='text-align:center'><tr>"
+				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
 				 + "<th>Employee Code</th>"
 				 + "<th>Employee Name</th>" +
 				 "<th>Employee email</th>" + 
@@ -162,7 +162,7 @@ public class EmployeeServlet
 				 } 
 				 	 con.close(); 
 				 	 // Complete the html table
-				 	 output += "</table>"; 
+				 	 output += "</table></div>"; 
 			 } 
 			 catch (Exception e) 
 			 { 

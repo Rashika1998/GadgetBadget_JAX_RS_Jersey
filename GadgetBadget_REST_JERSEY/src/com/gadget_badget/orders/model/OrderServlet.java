@@ -98,6 +98,7 @@ public class OrderServlet
 			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects'>Products</a></li>"
 			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts'>Cart</a></li>"
 			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders'>Order</a></li>"
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees'>Employee</a></li>"
 			 		+ "<li><a href='#'>Contact Us</a></li>"
 			 		+ "<li><a href='#'>About Us</a></li>"
 			 		+ ""
@@ -115,7 +116,7 @@ public class OrderServlet
 				 if (con == null) 
 				 {return "Error while connecting to the database for reading."; } 
 				 // Prepare the html table to be displayed
-				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header +  "<table border='1' style='text-align:center'><tr>"
+				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header +  "<div class='container'><table border='1' style='text-align:center'><tr>"
 				 + "<th>Order Code</th>"
 				 + "<th>Customer ID</th>" +
 				 "<th>Customer Email</th>" + 
@@ -161,7 +162,7 @@ public class OrderServlet
 				 } 
 				 	 con.close(); 
 				 	 // Complete the html table
-				 	 output += "</table>"; 
+				 	 output += "</table></div>"; 
 			 } 
 			 catch (Exception e) 
 			 { 
