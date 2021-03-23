@@ -28,11 +28,9 @@
 		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Projects</a></li>
 		        </ul>
 		      </li>
-		      
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
+		 
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts">Cart</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Manage</a></li>
+		      
 		      <li><a href="#">Contact Us</a></li>
 		      <li><a href="#">About Us</a></li>
 		      
@@ -48,7 +46,7 @@
 
 
 	<div class="container">
-		<h1>GadgetBadget</h1>
+		<h1>Welcome to GadgetBadget</h1>
 	</div>
 	
 </body>

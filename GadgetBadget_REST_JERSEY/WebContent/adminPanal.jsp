@@ -30,7 +30,6 @@
 		      </li>
 		      
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts">Cart</a></li>
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Manage</a></li>
 		      <li><a href="#">Contact Us</a></li>
