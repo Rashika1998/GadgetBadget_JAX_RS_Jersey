@@ -116,14 +116,14 @@ public class ProjectServlet
 				 // Prepare the html table to be displayed
 				 
 				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
-				 + "<th>Project Code</th>"
-				 + "<th>Project Name</th>" +
-				 "<th>Project Description</th>" + 
-				 "<th>Project Developed By</th>" + 
-				 "<th>Project Price</th>" +
-				 "<th>Project Category</th>" +
-				 "<th>Project Service Charge</th>" +
-				 "<th>Update</th><th>Remove</th></tr>"; 
+				 + "<th style='padding:10px; text-align:center;'>Project Code</th>"
+				 + "<th style='padding:10px; text-align:center;'>Project Name</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Description</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Project Developed By</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Project Price</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Category</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Service Charge</th>" +
+				 "<th style='padding:10px; text-align:center;'>Update</th><th>Remove</th></tr>"; 
 			 
 				 String query = "SELECT * FROM project_tab"; 
 				 Statement stmt = con.createStatement(); 
@@ -141,17 +141,17 @@ public class ProjectServlet
 					 String projectServiceCharge = Double.toString(rs.getDouble("projectServiceCharge")); 
 					 
 					 // Add into the html table
-					 output += "<tr><td>" + projectCode + "</td>"; 
-					 output += "<td>" + projectName + "</td>"; 
-					 output += "<td>" + projectDesc + "</td>"; 
-					 output += "<td>" + projectDevBy + "</td>"; 
-					 output += "<td>" + projectPrice + "</td>"; 
-					 output += "<td>" + projectCategory + "</td>"; 
-					 output += "<td>" + projectServiceCharge + "</td>"; 
+					 output += "<tr><td style='padding:10px; text-align:center;'>" + projectCode + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectName + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectDesc + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectDevBy + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectPrice + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectCategory + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectServiceCharge + "</td>"; 
 					 
 					 // buttons
-					 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
-					 + "<td><form method='post' action='items.jsp'>"
+					 output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
+					 + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
 					 + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
 					 + "<input name='itemID' type='hidden' value='" + projectID 
 					 + "'>" + "</form></td></tr>"; 
@@ -167,6 +167,133 @@ public class ProjectServlet
 			 } 
 		 	 return output; 
 		 } 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 public String readProjectsDetailsOnly() 
+		 { 
+			 String output = ""; 
+			 String boostrap_link_1 = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\' integrity=\'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\' crossorigin=\'anonymous\'>";
+			 String boostrap_link_2 = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>";
+			 String meta_1 = "<meta charset='utf-8'>";
+			 String meta_2 = "<meta name='viewport' content='width=device-width, initial-scale=1'>";
+			 String script_1 = "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>";
+			 String script_2 = "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>";
+			 
+			 
+			 String header = "<nav class='navbar navbar-inverse'>"
+			 		+ "<div class='container-fluid'>"
+			 		+ "<div class='navbar-header'>"
+			 		+ "<a class='navbar-brand' href='#'>GadgetBadget</a>"
+			 		+ "</div>"
+			 		+ "<ul class='nav navbar-nav'>"
+			 		+ "<li class='active'><a href='#'>Home</a></li>"
+			 		+ "<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>Category<span class='caret'></span></a>"
+			 		+ "<ul class='dropdown-menu'>"
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects/onlyDetails'>UI Design</a></li>"
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects/onlyDetails'>Back End</a></li>"
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects/onlyDetails'>UI/UX</a></li>"
+			 		+ "</ul>"
+			 		+ "</li>"
+			 		+ ""
+			 		
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts'>Cart</a></li>"
+			 		
+			 		+ "<li><a href='#'>Contact Us</a></li>"
+			 		+ "<li><a href='#'>About Us</a></li>"
+			 		+ ""
+			 		+ "</ul>"
+			 		+ "<ul class='nav navbar-nav navbar-right'>"
+			 		+ "<li><a href='#'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
+			 		+ "<li><a href='#'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>"
+			 		+ "</ul>"
+			 		+ "</div>"
+			 		+ "</nav>";
+			 
+			 
+			 
+			 try
+			 { 
+				 Connection con = connect(); 
+				 if (con == null) 
+				 {return "Error while connecting to the database for reading."; } 
+				 // Prepare the html table to be displayed
+				 
+				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center;'><tr>"
+				 + "<th style='padding:10px; text-align:center;'>Project Code</th>"
+				 + "<th style='padding:10px; text-align:center;'>Project Name</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Description</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Project Developed By</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Project Price</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Category</th>" +
+				 "<th style='padding:10px; text-align:center;'>Project Service Charge</th>";
+				 
+				 //+
+				 //"<th>Update</th><th>Remove</th></tr>"; 
+			 
+				 String query = "SELECT * FROM project_tab"; 
+				 Statement stmt = con.createStatement(); 
+				 ResultSet rs = stmt.executeQuery(query); 
+				 // iterate through the rows in the result set
+				 while (rs.next()) 
+				 { 
+					 String projectID = Integer.toString(rs.getInt("projectID")); 
+					 String projectCode = rs.getString("projectCode"); 
+					 String projectName = rs.getString("projectName"); 
+					 String projectDesc = rs.getString("projectDesc"); 
+					 String projectDevBy = rs.getString("projectDevBy"); 
+					 String projectPrice = Double.toString(rs.getDouble("projectPrice")); 
+					 String projectCategory = rs.getString("projectCategory"); 
+					 String projectServiceCharge = Double.toString(rs.getDouble("projectServiceCharge")); 
+					 
+					 // Add into the html table
+					 output += "<tr><td style='padding:10px; text-align:center;'>" + projectCode + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectName + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectDesc + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectDevBy + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectPrice + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectCategory + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectServiceCharge + "</td></tr>"; 
+					 
+					 // buttons
+					 //output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>";
+					 //+ "<td><form method='post' action='items.jsp'>"
+					 //+ "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
+					 //+ "<input name='itemID' type='hidden' value='" + projectID 
+					 //+ "'>" + "</form></td></tr>"; 
+				 } 
+				 	 con.close(); 
+				 	 // Complete the html table
+				 	 output += "</table></div>"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while reading the project details...!"; 
+				 System.err.println(e.getMessage()); 
+			 } 
+		 	 return output; 
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 		
 		
 		

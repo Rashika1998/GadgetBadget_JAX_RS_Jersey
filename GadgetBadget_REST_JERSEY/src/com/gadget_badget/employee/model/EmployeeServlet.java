@@ -120,14 +120,14 @@ public class EmployeeServlet
 				 // Prepare the html table to be displayed
 				 
 				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
-				 + "<th>Employee Code</th>"
-				 + "<th>Employee Name</th>" +
-				 "<th>Employee email</th>" + 
-				 "<th>Employee age</th>" + 
-				 "<th>Employee address</th>" +
-				 "<th>Employee Role</th>" +
-				 "<th>Job Started Date</th>" +
-				 "<th>Update</th><th>Remove</th></tr>"; 
+				 + "<th style='padding:10px; text-align:center;'>Employee Code</th>"
+				 + "<th style='padding:10px; text-align:center;'>Employee Name</th>" +
+				 "<th style='padding:10px; text-align:center;'>Employee email</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Employee age</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Employee address</th>" +
+				 "<th style='padding:10px; text-align:center;'>Employee Role</th>" +
+				 "<th style='padding:10px; text-align:center;'>Job Started Date</th>" +
+				 "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
 			 
 				 String query = "SELECT * FROM employee_tab"; 
 				 Statement stmt = con.createStatement(); 
@@ -145,17 +145,17 @@ public class EmployeeServlet
 					 String jobStartedDate = rs.getString("jobStartedDate"); 
 					 
 					 // Add into the html table
-					 output += "<tr><td>" + empCode + "</td>"; 
-					 output += "<td>" + empName + "</td>"; 
-					 output += "<td>" + empEmail + "</td>"; 
-					 output += "<td>" + empAge + "</td>"; 
-					 output += "<td>" + empAddress + "</td>"; 
-					 output += "<td>" + empRole + "</td>"; 
-					 output += "<td>" + jobStartedDate + "</td>"; 
+					 output += "<tr><td style='padding:10px; text-align:center;'>" + empCode + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + empName + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + empEmail + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + empAge + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + empAddress + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + empRole + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + jobStartedDate + "</td>"; 
 					 
 					 // buttons
-					 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
-					 + "<td><form method='post' action='items.jsp'>"
+					 output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
+					 + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
 					 + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
 					 + "<input name='itemID' type='hidden' value='" + empID 
 					 + "'>" + "</form></td></tr>"; 

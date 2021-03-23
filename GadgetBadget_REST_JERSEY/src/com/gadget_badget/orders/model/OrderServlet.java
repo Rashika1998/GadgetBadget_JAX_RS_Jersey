@@ -117,14 +117,14 @@ public class OrderServlet
 				 {return "Error while connecting to the database for reading."; } 
 				 // Prepare the html table to be displayed
 				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header +  "<div class='container'><table border='1' style='text-align:center'><tr>"
-				 + "<th>Order Code</th>"
-				 + "<th>Customer ID</th>" +
-				 "<th>Customer Email</th>" + 
-				 "<th>Customer Name</th>" + 
-				 "<th>Total Amount</th>" +
-				 "<th>Card No</th>" +
-				 "<th>CVV No</th>" +
-				 "<th>Update</th><th>Remove</th></tr>"; 
+				 + "<th style='padding:10px; text-align:center;'>Order Code</th>"
+				 + "<th style='padding:10px; text-align:center;'>Customer ID</th>" +
+				 "<th style='padding:10px; text-align:center;'>Customer Email</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Customer Name</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Total Amount</th>" +
+				 "<th style='padding:10px; text-align:center;'>Card No</th>" +
+				 "<th style='padding:10px; text-align:center;'>CVV No</th>" +
+				 "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
 			 
 				 String query = "SELECT * FROM order_tab"; 
 				 Statement stmt = con.createStatement(); 
@@ -143,19 +143,19 @@ public class OrderServlet
 					 
 					 
 					 // Add into the html table
-					 output += "<tr><td>" + orderCode + "</td>"; 
-					 output += "<td>" + customerID + "</td>"; 
-					 output += "<td>" + customerEmail + "</td>"; 
-					 output += "<td>" + customerName + "</td>"; 
-					 output += "<td>" + orderTotalAmount + "</td>"; 
-					 output += "<td>" + cardNo + "</td>"; 
-					 output += "<td>" + cvvNo + "</td>"; 
+					 output += "<tr><td style='padding:10px; text-align:center;'>" + orderCode + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + customerID + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + customerEmail + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + customerName + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + orderTotalAmount + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + cardNo + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + cvvNo + "</td>"; 
 					 
 					 
 					 
 					 // buttons
-					 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
-					 + "<td><form method='post' action='items.jsp'>"
+					 output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
+					 + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
 					 + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
 					 + "<input name='orderID' type='hidden' value='" + orderID 
 					 + "'>" + "</form></td></tr>"; 

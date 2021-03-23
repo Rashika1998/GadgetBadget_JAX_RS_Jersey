@@ -35,6 +35,31 @@ public class ProjectService
 	} 
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	//newly added into the system
+	@GET
+	@Path("/onlyDetails") 
+	@Produces(MediaType.TEXT_HTML) 
+	public String readProjectsDetailsOnly() 
+	{ 
+		return projectObj.readProjectsDetailsOnly(); 
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@POST
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
