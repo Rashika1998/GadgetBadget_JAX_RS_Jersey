@@ -29,7 +29,7 @@ public class ProjectService
 	@GET
 	@Path("/") 
 	@Produces(MediaType.TEXT_HTML) 
-	public String readItems() 
+	public String readProjects() 
 	{ 
 		return projectObj.readProjects(); 
 	} 

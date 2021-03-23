@@ -10,6 +10,39 @@
 <title>GadgetBadget JAX/RS REST_JERSEY</title>
 </head>
 <body>
+	
+	<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">GadgetBadget</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
+		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts">Cart</a></li>
+		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
+		        </ul>
+		      </li>
+		      
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts">Cart</a></li>
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Manage</a></li>
+		      <li><a href="#">Contact Us</a></li>
+		      <li><a href="#">About Us</a></li>
+		      
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		    </ul>
+		  </div>
+	</nav>
+
+
+
 
 	<div class="container">
 	<h1>GadgetBadget</h1>
