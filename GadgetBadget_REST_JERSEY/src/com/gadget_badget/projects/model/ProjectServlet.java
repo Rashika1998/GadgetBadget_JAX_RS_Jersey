@@ -100,7 +100,7 @@ public class ProjectServlet
 			 		+ ""
 			 		+ "</ul>"
 			 		+ "<ul class='nav navbar-nav navbar-right'>"
-			 		+ "<li><a href=''><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
+			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/SignUp.jsp'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
 			 		+ "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/SignIn.jsp'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>"
 			 		+ "</ul>"
 			 		+ "</div>"
