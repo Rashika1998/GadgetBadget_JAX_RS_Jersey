@@ -35,7 +35,7 @@
 	</nav>
 
 	<div class="container">
-	<h1>Gadgetbadget</h1>
+	<h1>Welcome to Gadgetbadget registration</h1>
 		<form action="" method="post">
 			  
 			  <div class="container">
