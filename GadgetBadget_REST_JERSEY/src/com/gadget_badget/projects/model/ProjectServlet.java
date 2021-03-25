@@ -239,7 +239,8 @@ public class ProjectServlet
 				 "<th style='padding:10px; text-align:center;'>Project Developed By</th>" + 
 				 "<th style='padding:10px; text-align:center;'>Project Price</th>" +
 				 "<th style='padding:10px; text-align:center;'>Project Category</th>" +
-				 "<th style='padding:10px; text-align:center;'>Project Service Charge</th>";
+				 "<th style='padding:10px; text-align:center;'>Project Service Charge</th>"+
+				 "<th style='padding:10px; text-align:center;'>Add to cart</th>";
 				 
 				 //+
 				 //"<th>Update</th><th>Remove</th></tr>"; 
@@ -266,7 +267,9 @@ public class ProjectServlet
 					 output += "<td style='padding:10px; text-align:center;'>" + projectDevBy + "</td>"; 
 					 output += "<td style='padding:10px; text-align:center;'>" + projectPrice + "</td>"; 
 					 output += "<td style='padding:10px; text-align:center;'>" + projectCategory + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + projectServiceCharge + "</td></tr>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + projectServiceCharge + "</td>"; 
+					 output += "<td><input name='btnUpdate' type='button' value='Add' class='btn btn-info'></td></tr>";
+					 
 					 
 					 // buttons
 					 //output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>";
