@@ -28,7 +28,7 @@ public class ResearcherServlet
 	
 	
 	
-		 public String insertEmployee(String emp_code, String emp_name, String emp_email, String emp_age , String emp_address , String emp_role , String job_started_date) 
+		 public String insertResearcher(String res_code, String res_name, String res_email, String res_age , String res_address , String res_role , String join_date) 
 		 { 
 			 String output = ""; 
 			 try
@@ -39,29 +39,29 @@ public class ResearcherServlet
 					 return "Error while connecting to the database for inserting."; 
 				 } 
 			 	 	 // create a prepared statement
-				 	 String query = " INSERT INTO employee_tab(`empID`,`empCode`,`empName`,`empEmail`,`empAge`,`empAddress`,`empRole`,`jobStartedDate`)"
+				 	 String query = " INSERT INTO researcher_tab(`resID`,`resCode`,`resName`,`resEmail`,`resAge`,`resAddress`,`resRole`,`joinDate`)"
 				     + " VALUES (?, ?, ?, ?, ? ,? ,? ,?)"; 
 					 PreparedStatement preparedStmt = con.prepareStatement(query); 
 					 
 					 
 					 // binding values
 					 preparedStmt.setInt(1, 0); 
-					 preparedStmt.setString(2, emp_code); 
-					 preparedStmt.setString(3, emp_name); 
-					 preparedStmt.setString(4, emp_email);
-					 preparedStmt.setString(5, emp_age); 
-					 preparedStmt.setString(6, emp_address);
-					 preparedStmt.setString(7, emp_role); 
-					 preparedStmt.setString(8, job_started_date); 
+					 preparedStmt.setString(2, res_code); 
+					 preparedStmt.setString(3, res_name); 
+					 preparedStmt.setString(4, res_email);
+					 preparedStmt.setString(5, res_age); 
+					 preparedStmt.setString(6, res_address);
+					 preparedStmt.setString(7, res_role); 
+					 preparedStmt.setString(8, join_date); 
 					 
 				 
 					 preparedStmt.execute(); 
 					 con.close(); 
-					 output = "Employee details have been inserted successfully..!"; 
+					 output = "Researcher details have been inserted successfully..!"; 
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while inserting the employee details..!."; 
+				 output = "Error while inserting the researcher details..!."; 
 				 System.err.println(e.getMessage()); 
 			 } 
 		 	return output; 
@@ -69,10 +69,10 @@ public class ResearcherServlet
 		 
 		 
 		 
-		 public String readEmployees() 
+		 public String readResearchers() 
 		 { 
 			 String output = ""; 
-			 String boostrap_link_1 = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\' integrity=\'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\' crossorigin=\'anonymous\'>";
+			 //String boostrap_link_1 = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\' integrity=\'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\' crossorigin=\'anonymous\'>";
 			 String boostrap_link_2 = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>";
 			 String meta_1 = "<meta charset='utf-8'>";
 			 String meta_2 = "<meta name='viewport' content='width=device-width, initial-scale=1'>";
@@ -120,44 +120,44 @@ public class ResearcherServlet
 				 // Prepare the html table to be displayed
 				 
 				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
-				 + "<th style='padding:10px; text-align:center;'>Employee Code</th>"
-				 + "<th style='padding:10px; text-align:center;'>Employee Name</th>" +
-				 "<th style='padding:10px; text-align:center;'>Employee email</th>" + 
-				 "<th style='padding:10px; text-align:center;'>Employee age</th>" + 
-				 "<th style='padding:10px; text-align:center;'>Employee address</th>" +
-				 "<th style='padding:10px; text-align:center;'>Employee Role</th>" +
-				 "<th style='padding:10px; text-align:center;'>Job Started Date</th>" +
+				 + "<th style='padding:10px; text-align:center;'>Researcher Code</th>"
+				 + "<th style='padding:10px; text-align:center;'>Researcher Name</th>" +
+				 "<th style='padding:10px; text-align:center;'>Researcher email</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Researcher age</th>" + 
+				 "<th style='padding:10px; text-align:center;'>Researcher address</th>" +
+				 "<th style='padding:10px; text-align:center;'>Researcher Role</th>" +
+				 "<th style='padding:10px; text-align:center;'>Joined Date</th>" +
 				 "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
 			 
-				 String query = "SELECT * FROM employee_tab"; 
+				 String query = "SELECT * FROM researcher_tab"; 
 				 Statement stmt = con.createStatement(); 
 				 ResultSet rs = stmt.executeQuery(query); 
 				 // iterate through the rows in the result set
 				 while (rs.next()) 
 				 { 
-					 String empID = Integer.toString(rs.getInt("empID")); 
-					 String empCode = rs.getString("empCode"); 
-					 String empName = rs.getString("empName"); 
-					 String empEmail = rs.getString("empEmail"); 
-					 String empAge = rs.getString("empAge"); 
-					 String empAddress = rs.getString("empAddress"); 
-					 String empRole = rs.getString("empRole"); 
-					 String jobStartedDate = rs.getString("jobStartedDate"); 
+					 String resID = Integer.toString(rs.getInt("resID")); 
+					 String resCode = rs.getString("resCode"); 
+					 String resName = rs.getString("resName"); 
+					 String resEmail = rs.getString("resEmail"); 
+					 String resAge = rs.getString("resAge"); 
+					 String resAddress = rs.getString("resAddress"); 
+					 String resRole = rs.getString("resRole"); 
+					 String joinDate = rs.getString("joinDate"); 
 					 
 					 // Add into the html table
-					 output += "<tr><td style='padding:10px; text-align:center;'>" + empCode + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + empName + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + empEmail + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + empAge + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + empAddress + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + empRole + "</td>"; 
-					 output += "<td style='padding:10px; text-align:center;'>" + jobStartedDate + "</td>"; 
+					 output += "<tr><td style='padding:10px; text-align:center;'>" + resCode + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + resName + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + resEmail + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + resAge + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + resAddress + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + resRole + "</td>"; 
+					 output += "<td style='padding:10px; text-align:center;'>" + joinDate + "</td>"; 
 					 
 					 // buttons
 					 output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
 					 + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
 					 + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
-					 + "<input name='itemID' type='hidden' value='" + empID 
+					 + "<input name='itemID' type='hidden' value='" + resID 
 					 + "'>" + "</form></td></tr>"; 
 				 } 
 				 	 con.close(); 
@@ -166,7 +166,7 @@ public class ResearcherServlet
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while reading the employee details...!"; 
+				 output = "Error while reading the researcher details...!"; 
 				 System.err.println(e.getMessage()); 
 			 } 
 		 	 return output; 
@@ -174,7 +174,7 @@ public class ResearcherServlet
 		
 		
 		
-		public String updateEmployee(String emp_id, String emp_code, String emp_name, String emp_email, String emp_age, String emp_address , String emp_role , String job_started_date)
+		public String updateResearcher(String emp_id, String emp_code, String emp_name, String emp_email, String emp_age, String emp_address , String emp_role , String job_started_date)
 		{ 
 			 String output = ""; 
 			 try
@@ -212,7 +212,7 @@ public class ResearcherServlet
 		
 		
 		
-			 public String deleteEmployee(String empID) 
+			 public String deleteResearcher(String empID) 
 			 { 
 				 String output = ""; 
 			 try
