@@ -224,18 +224,18 @@ public class ResearcherServlet
 			 } 
 			 
 			 	 // create a prepared statement
-				 String query = "DELETE FROM employee_tab WHERE empID=?"; 
+				 String query = "DELETE FROM researcher_tab WHERE resID=?"; 
 				 PreparedStatement preparedStmt = con.prepareStatement(query); 
 				 // binding values
 				 preparedStmt.setInt(1, Integer.parseInt(resID)); 
 				 // execute the statement
 				 preparedStmt.execute(); 
 				 con.close(); 
-				 output = "Employee has been deleted successfully"; 
+				 output = "Researcher has been deleted successfully"; 
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while deleting the project from the database."; 
+				 output = "Error while deleting the researcher from the database."; 
 				 System.err.println(e.getMessage()); 
 			 } 
 			 return output; 
