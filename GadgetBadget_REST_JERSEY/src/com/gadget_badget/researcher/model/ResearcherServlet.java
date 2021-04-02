@@ -174,7 +174,7 @@ public class ResearcherServlet
 		
 		
 		
-		public String updateResearcher(String emp_id, String emp_code, String emp_name, String emp_email, String emp_age, String emp_address , String emp_role , String job_started_date)
+		public String updateResearcher(String res_id, String res_code, String res_name, String res_email, String res_age, String res_address , String res_role , String join_date)
 		{ 
 			 String output = ""; 
 			 try
@@ -185,26 +185,26 @@ public class ResearcherServlet
 					 return "Error while connecting to the database for updating."; 
 				 } 
 				 // create a prepared statement
-				 String query = "UPDATE employee_tab SET empCode=? , empName=? , empEmail=? , empAge=? , empAddress=? , empRole=? , jobStartedDate=?  WHERE empID=?"; 
+				 String query = "UPDATE researcher_tab SET resCode=? , resName=? , resEmail=? , resAge=? , resAddress=? , resRole=? , joinDate=?  WHERE resID=?"; 
 				 PreparedStatement preparedStmt = con.prepareStatement(query); 
 				 // binding values
-				 preparedStmt.setString(1, emp_code); 
-				 preparedStmt.setString(2, emp_name); 
-				 preparedStmt.setString(3, emp_email); 
-				 preparedStmt.setString(4, emp_age); 
-				 preparedStmt.setString(5, emp_address); 
-				 preparedStmt.setString(6, emp_role); 
-				 preparedStmt.setString(7, job_started_date); 
-				 preparedStmt.setInt(8, Integer.parseInt(emp_id)); 
+				 preparedStmt.setString(1, res_code); 
+				 preparedStmt.setString(2, res_name); 
+				 preparedStmt.setString(3, res_email); 
+				 preparedStmt.setString(4, res_age); 
+				 preparedStmt.setString(5, res_address); 
+				 preparedStmt.setString(6, res_role); 
+				 preparedStmt.setString(7, join_date); 
+				 preparedStmt.setInt(8, Integer.parseInt(res_id)); 
 				 
 				 // execute the statement
 				 preparedStmt.execute(); 
 				 con.close(); 
-				 output = "Employee details have been updated successfully...!"; 
+				 output = "Researcher details have been updated successfully...!"; 
 			 } 
 			 catch (Exception e) 
 			 { 
-				 output = "Error while updating employee details...!"; 
+				 output = "Error while updating researcher details...!"; 
 				 System.err.println(e.getMessage()); 
 			 } 
 			 	return output; 
@@ -212,7 +212,7 @@ public class ResearcherServlet
 		
 		
 		
-			 public String deleteResearcher(String empID) 
+			 public String deleteResearcher(String resID) 
 			 { 
 				 String output = ""; 
 			 try
@@ -227,7 +227,7 @@ public class ResearcherServlet
 				 String query = "DELETE FROM employee_tab WHERE empID=?"; 
 				 PreparedStatement preparedStmt = con.prepareStatement(query); 
 				 // binding values
-				 preparedStmt.setInt(1, Integer.parseInt(empID)); 
+				 preparedStmt.setInt(1, Integer.parseInt(resID)); 
 				 // execute the statement
 				 preparedStmt.execute(); 
 				 con.close(); 
