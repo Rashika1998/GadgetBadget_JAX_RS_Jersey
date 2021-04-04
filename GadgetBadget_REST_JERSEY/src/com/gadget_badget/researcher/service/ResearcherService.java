@@ -58,20 +58,20 @@ public class ResearcherService
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String updateEmployee(String employeeData) 
+	public String updateResearcher(String researcherData) 
 	{ 
 		//Convert the input string to a JSON object 
-		 JsonObject employeeObject = new JsonParser().parse(employeeData).getAsJsonObject(); 
+		 JsonObject researcherObject = new JsonParser().parse(researcherData).getAsJsonObject(); 
 		//Read the values from the JSON object
-		 String empID = employeeObject.get("empID").getAsString(); 
-		 String empCode = employeeObject.get("empCode").getAsString(); 
-		 String empName = employeeObject.get("empName").getAsString(); 
-		 String empEmail = employeeObject.get("empEmail").getAsString(); 
-		 String empAge = employeeObject.get("empAge").getAsString(); 
-		 String empAddress = employeeObject.get("empAddress").getAsString(); 
-		 String empRole = employeeObject.get("empRole").getAsString(); 
-		 String jobStartedDate = employeeObject.get("jobStartedDate").getAsString(); 
-		 String output = researcherObj.updateResearcher(empID, empCode, empName, empEmail, empAge, empAddress, empRole, jobStartedDate); 
+		 String resID = researcherObject.get("resID").getAsString(); 
+		 String resCode = researcherObject.get("resCode").getAsString(); 
+		 String resName = researcherObject.get("resName").getAsString(); 
+		 String resEmail = researcherObject.get("resEmail").getAsString(); 
+		 String resAge = researcherObject.get("resAge").getAsString(); 
+		 String resAddress = researcherObject.get("resAddress").getAsString(); 
+		 String resRole = researcherObject.get("resRole").getAsString(); 
+		 String joinDate = researcherObject.get("joinDate").getAsString(); 
+		 String output = researcherObj.updateResearcher(resID, resCode, resName, resEmail, resAge, resAddress, resRole, joinDate); 
 		 return output; 
 	}
 	
@@ -83,14 +83,14 @@ public class ResearcherService
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String deleteEmployee(String employeeData) 
+	public String deleteResearcher(String researcherData) 
 	{ 
 		//Convert the input string to an XML document
-		 Document doc = Jsoup.parse(employeeData, "", Parser.xmlParser()); 
+		 Document doc = Jsoup.parse(researcherData, "", Parser.xmlParser()); 
 		 
 		//Read the value from the element <itemID>
-		 String empID = doc.select("empID").text(); 
-		 String output = researcherObj.deleteResearcher(empID); 
+		 String resID = doc.select("resID").text(); 
+		 String output = researcherObj.deleteResearcher(resID); 
 		 return output; 
 	}
 
