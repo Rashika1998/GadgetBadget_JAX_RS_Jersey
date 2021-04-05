@@ -173,7 +173,7 @@ public class ResearcherServlet
 		 } 
 		
 		
-		
+		//Updating a researcher
 		public String updateResearcher(String res_id, String res_code, String res_name, String res_email, String res_age, String res_address , String res_role , String join_date)
 		{ 
 			 String output = ""; 
