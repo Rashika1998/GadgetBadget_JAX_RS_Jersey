@@ -24,6 +24,7 @@ public class ResearcherService
 	
 	ResearcherServlet researcherObj = new ResearcherServlet(); 
 	
+	//Service for displaying all the researchers
 	@GET
 	@Path("/") 
 	@Produces(MediaType.TEXT_HTML) 
@@ -33,6 +34,8 @@ public class ResearcherService
 	} 
 	
 	
+	
+	//Service for inserting any researcher into the system
 	@POST
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
@@ -53,7 +56,7 @@ public class ResearcherService
 	
 	
 	
-	
+	//Service for updating any researcher's data
 	@PUT
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_JSON) 
@@ -78,7 +81,7 @@ public class ResearcherService
 	
 	
 	
-	
+	//Service for deleting any researcher's record
 	@DELETE
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 

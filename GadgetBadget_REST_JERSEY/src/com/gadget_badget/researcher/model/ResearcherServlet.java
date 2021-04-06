@@ -27,7 +27,7 @@ public class ResearcherServlet
 	
 	
 	
-	
+		 //Function for inserting researchers data
 		 public String insertResearcher(String res_code, String res_name, String res_email, String res_age , String res_address , String res_role , String join_date) 
 		 { 
 			 String output = ""; 
