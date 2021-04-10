@@ -31,8 +31,8 @@
 		      
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
 		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Manage</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Researchers">Researcher Manage</a></li>
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Details</a></li>
+		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Researchers">Researcher Details</a></li>
 		      <li><a href="#">Contact Us</a></li>
 		      <li><a href="#">About Us</a></li>
 		      
