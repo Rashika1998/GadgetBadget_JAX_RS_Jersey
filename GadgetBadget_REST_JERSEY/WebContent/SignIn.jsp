@@ -19,18 +19,18 @@
 	<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="http://localhost:9002/GadgetBadget_REST_JERSEY/">GadgetBadget</a>
+		      <a class="navbar-brand" href="/">GadgetBadget</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/">Home</a></li>
+		      <li class="active"><a href="/">Home</a></li>
 	
 		      <li><a href="#">Contact Us</a></li>
 		      <li><a href="#">About Us</a></li>
 		      
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		      <li><a href="SignUp.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		      <li><a href="SignIn.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		    </ul>
 		  </div>
 	</nav>
@@ -46,7 +46,7 @@
 			    <label for="psw"><b>Password</b></label>
 			    <input type="password" placeholder="Enter Password" name="psw" >
 			
-			    <button type="submit"><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/" style="text-decoration:none; color:white;">Login</a></button>
+			    <button type="submit"><a href="/" style="text-decoration:none; color:white;">Login</a></button>
 			    <label>
 			      <input type="checkbox" checked="checked" name="remember"> Remember me
 			    </label>
