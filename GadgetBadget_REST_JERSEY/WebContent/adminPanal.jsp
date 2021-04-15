@@ -17,22 +17,22 @@
 	<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="http://localhost:9002/GadgetBadget_REST_JERSEY/">GadgetBadget</a>
+		      <a class="navbar-brand" href="/">GadgetBadget</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/">Home</a></li>
+		      <li class="active"><a href="/">Home</a></li>
 		      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
 		        <ul class="dropdown-menu">
-		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
-		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Projects</a></li>
-		          <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Projects</a></li>
+		          <li><a href="myService/Projects">Products</a></li>
+		          <li><a href="myService/Projects">Projects</a></li>
+		          <li><a href="myService/Projects">Projects</a></li>
 		        </ul>
 		      </li>
 		      
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Products</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Order</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Employee Manage</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Researchers">Researcher Manage</a></li>
+		      <li><a href="myService/Projects">Products</a></li>
+		      <li><a href="myService/Orders">Order</a></li>
+		      <li><a href="yService/Employees">Employee Manage</a></li>
+		      <li><a href="myService/Researchers">Researcher Manage</a></li>
 		      <li><a href="#">Contact Us</a></li>
 		      <li><a href="#">About Us</a></li>
 		      
