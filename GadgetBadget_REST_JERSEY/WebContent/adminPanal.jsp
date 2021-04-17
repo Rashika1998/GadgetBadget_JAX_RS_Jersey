@@ -29,24 +29,17 @@
 		        </ul>
 		      </li>
 		      
- master
 		      <li><a href="myService/Projects">Products</a></li>
 		      <li><a href="myService/Orders">Order</a></li>
 		      <li><a href="myService/Employees">Employee Manage</a></li>
 		      <li><a href="myService/Researchers">Researcher Manage</a></li>
-=======
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects">Manage Products</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders">Manage Orders</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees">Manage Employees</a></li>
-		      <li><a href="http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Researchers">Manage Researchers</a></li>
- master
 		      <li><a href="#">Contact Us</a></li>
 		      <li><a href="#">About Us</a></li>
 		      
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		      <li><a href="SignUp.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		      <li><a href="SignIn.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		    </ul>
 		  </div>
 	</nav>
