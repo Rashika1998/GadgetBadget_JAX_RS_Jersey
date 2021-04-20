@@ -81,7 +81,7 @@ public class OrderService
 	
 	
 	
-	
+	/*
 	
 	@DELETE
 	@Path("/") 
@@ -97,5 +97,6 @@ public class OrderService
 		 String output = orderObj.deleteOrder(orderID); 
 		 return output; 
 	}
+	*/
 
 }
