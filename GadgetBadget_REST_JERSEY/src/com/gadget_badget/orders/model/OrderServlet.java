@@ -175,4 +175,29 @@ public class OrderServlet
 			 } 
 		 	return output; 
 		 } 
+		
+		public String deleteOrder(String orderID) 
+		{ 
+			 String output = ""; 
+			 try { 
+				 Connection connection = connect(); 
+				 if (connection == null)  {
+					 return "Error while connecting to the database for deleting."; 
+				 } 
+			 
+				 String query = "DELETE FROM order_tab WHERE orderID=?"; 
+				 PreparedStatement preparedStatement = connection.prepareStatement(query); 
+				 
+				 preparedStatement.setInt(1, Integer.parseInt(orderID)); 
+				 
+				 preparedStatement.execute(); 
+				 connection.close(); 
+				 output = "Order has been deleted successfully"; 
+			 } 
+			 catch (Exception e)  { 
+				 output = "Error while deleting the order."; 
+				 System.err.println(e.getMessage()); 
+			 } 
+			 return output; 
+		 } 
 } 
