@@ -21,5 +21,31 @@ import com.google.gson.JsonParser;
 @Path("/Orders") 
 public class OrderService 
 {
+	OrderServlet orderObj = new OrderServlet(); 
 	
+	@GET
+	@Path("/") 
+	@Produces(MediaType.TEXT_HTML) 
+	public String readOrder() 
+	{ 
+		return orderObj.readOrder(); 
+	} 
+	
+	@POST
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String insertOrder(
+		 @FormParam("orderCode") String orderCode, 
+		 @FormParam("customerID") String customerID, 
+		 @FormParam("customerEmail") String customerEmail, 
+		 @FormParam("customerName") String customerName,
+		 @FormParam("orderTotalAmount") String orderTotalAmount,
+		 @FormParam("cardNo") String cardNo,
+		 @FormParam("cvvNo") String cvvNo)
+		 
+	{ 
+		String output = orderObj.insertOrder(orderCode, customerID, customerEmail, customerName, orderTotalAmount, cardNo, cvvNo); 
+		return output; 
+	}
 }
