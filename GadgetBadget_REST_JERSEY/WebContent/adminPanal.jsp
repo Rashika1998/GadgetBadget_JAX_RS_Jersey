@@ -23,9 +23,9 @@
 		      <li class="active"><a href="/">Home</a></li>
 		      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
 		        <ul class="dropdown-menu">
-		          <li><a href="myService/Projects">Products</a></li>
-		          <li><a href="myService/Projects">Projects</a></li>
-		          <li><a href="myService/Projects">Projects</a></li>
+		          <li><a href="myService/Projects">UI Design</a></li>
+		          <li><a href="myService/Projects">UX Design</a></li>
+		          <li><a href="myService/Projects">Backend</a></li>
 		        </ul>
 		      </li>
 		      
