@@ -55,9 +55,7 @@ public class OrderService
 	@Produces(MediaType.TEXT_PLAIN) 
 	public String updateOrder(String orderData) 
 	{ 
-		//Convert the input string to a JSON object 
 		 JsonObject orderObject = new JsonParser().parse(orderData).getAsJsonObject(); 
-		//Read the values from the JSON object
 		 String orderID = orderObject.get("orderID").getAsString(); 
 		 String orderCode = orderObject.get("orderCode").getAsString(); 
 		 String customerID = orderObject.get("customerID").getAsString(); 
@@ -68,6 +66,19 @@ public class OrderService
 		 String cvvNo = orderObject.get("cvvNo").getAsString(); 
 		 
 		 String output = orderServlet.updateOrder(orderID, orderCode, customerID, customerEmail, customerName, orderTotalAmount, cardNo, cvvNo); 
+		 return output; 
+	}
+	
+	@DELETE
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_XML) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String deleteOrder(String orderData) 
+	{ 
+		 Document document = Jsoup.parse(orderData, "", Parser.xmlParser()); 
+		 
+		 String orderID = document.select("orderID").text(); 
+		 String output = orderServlet.deleteOrder(orderID); 
 		 return output; 
 	}
 }
