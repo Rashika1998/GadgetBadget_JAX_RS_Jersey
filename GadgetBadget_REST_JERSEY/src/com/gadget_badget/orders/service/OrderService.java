@@ -21,5 +21,13 @@ import com.google.gson.JsonParser;
 @Path("/Orders") 
 public class OrderService 
 {
+	OrderServlet orderObj = new OrderServlet(); 
 	
+	@GET
+	@Path("/") 
+	@Produces(MediaType.TEXT_HTML) 
+	public String readOrder() 
+	{ 
+		return orderObj.readOrder(); 
+	} 
 }
