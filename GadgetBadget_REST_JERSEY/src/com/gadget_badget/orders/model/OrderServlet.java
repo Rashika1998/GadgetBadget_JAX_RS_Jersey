@@ -62,7 +62,6 @@ public class OrderServlet
 			 String script_1 = "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>";
 			 String script_2 = "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>";
 			 
-			 
 			 String header = "<nav class='navbar navbar-inverse'>"
 			 		+ "<div class='container-fluid'>"
 			 		+ "<div class='navbar-header'>"
@@ -143,5 +142,37 @@ public class OrderServlet
 				 System.err.println(e.getMessage()); 
 			 } 
 		 	 return output; 
+		 } 
+		
+		public String updateOrder(String order_id, String order_code, String customer_id, String customer_email, String customer_name , String order_total_amount , String card_no , String cvv_no)
+		{ 
+			 String output = ""; 
+			 try { 
+				 Connection connection = connect(); 
+				 if (connection == null)  {
+					 return "Error while connecting to the database for updating."; 
+				 } 
+
+				 String query = "UPDATE order_tab SET "
+				 		+ "orderCode=? , customerID=? , customerEmail=? , customerName=? , orderTotalAmount=? , cardNo=? , cvvNo=? "
+				 		+ " WHERE orderID=?"; 
+				 PreparedStatement preparedStatement = connection.prepareStatement(query); 
+
+				 preparedStatement.setString(1, order_code); 
+				 preparedStatement.setString(2, customer_id); 
+				 preparedStatement.setString(3, customer_email); 
+				 preparedStatement.setString(4, customer_name); 
+				 preparedStatement.setDouble(5, Double.parseDouble(order_total_amount)); 
+				 preparedStatement.setString(6, card_no); 
+				 preparedStatement.setString(7, cvv_no); 
+				 preparedStatement.setInt(8, Integer.parseInt(order_id)); 
+				 preparedStatement.execute(); 
+				 connection.close(); 
+				 output = "Order details have been updated successfully...!"; 
+			 }  catch (Exception e)  { 
+				 output = "Error while updating order details...!"; 
+				 System.err.println(e.getMessage()); 
+			 } 
+		 	return output; 
 		 } 
 } 
