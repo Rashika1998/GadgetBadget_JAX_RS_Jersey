@@ -21,7 +21,7 @@ import com.google.gson.JsonParser;
 @Path("/Orders") 
 public class OrderService 
 {
-	OrderServlet orderObj = new OrderServlet(); 
+	OrderServlet orderServlet = new OrderServlet(); 
 	
 	@GET
 	@Path("/") 
@@ -45,7 +45,29 @@ public class OrderService
 		 @FormParam("cvvNo") String cvvNo)
 		 
 	{ 
-		String output = orderObj.insertOrder(orderCode, customerID, customerEmail, customerName, orderTotalAmount, cardNo, cvvNo); 
+		String output = orderServlet.insertOrder(orderCode, customerID, customerEmail, customerName, orderTotalAmount, cardNo, cvvNo); 
 		return output; 
+	}
+	
+	@PUT
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_JSON) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String updateOrder(String orderData) 
+	{ 
+		//Convert the input string to a JSON object 
+		 JsonObject orderObject = new JsonParser().parse(orderData).getAsJsonObject(); 
+		//Read the values from the JSON object
+		 String orderID = orderObject.get("orderID").getAsString(); 
+		 String orderCode = orderObject.get("orderCode").getAsString(); 
+		 String customerID = orderObject.get("customerID").getAsString(); 
+		 String customerEmail = orderObject.get("customerEmail").getAsString(); 
+		 String customerName = orderObject.get("customerName").getAsString(); 
+		 String orderTotalAmount = orderObject.get("orderTotalAmount").getAsString(); 
+		 String cardNo = orderObject.get("cardNo").getAsString(); 
+		 String cvvNo = orderObject.get("cvvNo").getAsString(); 
+		 
+		 String output = orderServlet.updateOrder(orderID, orderCode, customerID, customerEmail, customerName, orderTotalAmount, cardNo, cvvNo); 
+		 return output; 
 	}
 }
