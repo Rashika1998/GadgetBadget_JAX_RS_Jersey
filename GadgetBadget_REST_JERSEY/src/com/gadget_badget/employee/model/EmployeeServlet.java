@@ -25,5 +25,42 @@ connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadg
 		{e.printStackTrace();} 
 		 	return connection; 
 		} 
-	
+
+public String insertCart(String cart_code, String project_code, String project_name, String project_qty , String project_unit_price , String customer_id) 
+		 { 
+			 String output = ""; 
+			 try
+			 { 
+				 Connection connection = connect(); 
+				 if (connection == null) 
+				 {
+					 return "Error while connecting to the database for inserting."; 
+				 } 
+			 	 	 // create a prepared statement
+				 	 String query = " INSERT INTO cart_tab(`cartID`,`cartCode`,`projectCode`,`projectName`,`projectQty`,`projectUnitPrice`,`customerID`)"
+				     + " VALUES (?, ?, ?, ?, ? ,? ,?)"; 
+					 PreparedStatement preparedStmt = connection.prepareStatement(query); 
+					 
+					 
+					 // binding values
+					 preparedStmt.setInt(1, 0); 
+					 preparedStmt.setString(2, cart_code); 
+					 preparedStmt.setString(3, project_code); 
+					 preparedStmt.setString(4, project_name);
+					 preparedStmt.setDouble(5, Double.parseDouble(project_qty)); 
+					 preparedStmt.setDouble(6, Double.parseDouble(project_unit_price)); 
+					 preparedStmt.setString(7, customer_id); 
+					 
+				 
+					 preparedStmt.execute(); 
+					 connection.close(); 
+					 output = "Project has been added into the cart successfully..!"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while inserting the project into the cart..!."; 
+				 System.err.println(e.getMessage()); 
+			 } 
+		 	return output; 
+		 } 	
 } 
