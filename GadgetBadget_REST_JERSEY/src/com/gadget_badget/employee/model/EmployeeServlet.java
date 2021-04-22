@@ -30,8 +30,8 @@ connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadg
 			 String output = ""; 
 			 try
 			 { 
-				 Connection connection = connect(); 
-				 if (connection == null) 
+				 Connection con = connect(); 
+				 if (con == null) 
 				 {
 					 return "Error while connecting to the database for inserting."; 
 				 } 
@@ -53,7 +53,7 @@ connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadg
 					 
 				 
 					 preparedStmt.execute(); 
-					 connection.close(); 
+					 con.close(); 
 					 output = "Employee details have been inserted successfully..!"; 
 			 } 
 			 catch (Exception e) 
