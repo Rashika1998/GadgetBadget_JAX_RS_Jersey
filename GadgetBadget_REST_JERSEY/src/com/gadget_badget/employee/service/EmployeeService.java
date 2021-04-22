@@ -48,4 +48,24 @@ public class EmployeeService
 		String output = employeeObj.insertEmployee(empCode, empName, empEmail, empAge, empAddress, empRole, jobStartedDate); 
 		return output; 
 	}
+    @PUT
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_JSON) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String updateEmployee(String employeeData) 
+	{ 
+		//Convert the input string to a JSON object 
+		 JsonObject employeeObject = new JsonParser().parse(employeeData).getAsJsonObject(); 
+		//Read the values from the JSON object
+		 String empID = employeeObject.get("empID").getAsString(); 
+		 String empCode = employeeObject.get("empCode").getAsString(); 
+		 String empName = employeeObject.get("empName").getAsString(); 
+		 String empEmail = employeeObject.get("empEmail").getAsString(); 
+		 String empAge = employeeObject.get("empAge").getAsString(); 
+		 String empAddress = employeeObject.get("empAddress").getAsString(); 
+		 String empRole = employeeObject.get("empRole").getAsString(); 
+		 String jobStartedDate = employeeObject.get("jobStartedDate").getAsString(); 
+		 String output = employeeObj.updateEmployee(empID, empCode, empName, empEmail, empAge, empAddress, empRole, jobStartedDate); 
+		 return output; 
+	}
 }
