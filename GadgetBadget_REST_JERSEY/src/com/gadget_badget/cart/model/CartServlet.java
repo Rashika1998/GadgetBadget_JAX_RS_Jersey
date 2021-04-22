@@ -102,13 +102,53 @@ public class CartServlet
 			 
 			 try
 			 { 
-				 Connection con = connect(); 
-				 if (con == null) 
-				 {return "Error while connecting to the database for reading."; } 
-				 
-				 	 con.close(); 
-				 	 // Complete the html table
-				 	 output += "</table></div>"; 
+                Connection con = connect(); 
+                if (con == null) 
+                {return "Error while connecting to the database for reading."; } 
+                // Prepare the html table to be displayed
+                output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
+                + "<th style='padding:10px; text-align:center;'>Cart Code</th>"
+                + "<th style='padding:10px; text-align:center;'>Project Code</th>" +
+                "<th style='padding:10px; text-align:center;'>Project Name</th>" + 
+                "<th style='padding:10px; text-align:center;'>Project Quentity</th>" + 
+                "<th style='padding:10px; text-align:center;'>Project Unit Price</th>" +
+                "<th style='padding:10px; text-align:center;'>Customer ID</th>" +
+                "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
+            
+                String query = "SELECT * FROM cart_tab"; 
+                Statement stmt = con.createStatement(); 
+                ResultSet rs = stmt.executeQuery(query); 
+                // iterate through the rows in the result set
+                while (rs.next()) 
+                { 
+                    String cartID = Integer.toString(rs.getInt("cartID")); 
+                    String cartCode = rs.getString("cartCode"); 
+                    String projectCode = rs.getString("projectCode"); 
+                    String projectName = rs.getString("projectName"); 
+                    String projectQty = Double.toString(rs.getDouble("projectQty")); 
+                    String projectUnitPrice = Double.toString(rs.getDouble("projectUnitPrice")); 
+                    String customerID = rs.getString("customerID"); 
+                    
+                    
+                    // Add into the html table
+                    output += "<tr><td style='padding:10px; text-align:center;'>" + cartCode + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectCode + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectName + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectQty + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectUnitPrice + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + customerID + "</td>"; 
+                    
+                    
+                    // buttons
+                    output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
+                    + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
+                    + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
+                    + "<input name='itemID' type='hidden' value='" + cartID 
+                    + "'>" + "</form></td></tr>"; 
+                } 
+                     con.close(); 
+                     // Complete the html table
+                     output += "</table></div>";
 			 } 
 			 catch (Exception e) 
 			 { 
