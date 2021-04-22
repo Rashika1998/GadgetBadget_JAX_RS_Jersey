@@ -21,5 +21,31 @@ import com.google.gson.JsonParser;
 @Path("/Employees") 
 public class EmployeeService 
 {
+	EmployeeServlet employeeObj = new EmployeeServlet(); 
 	
+	@GET
+	@Path("/") 
+	@Produces(MediaType.TEXT_HTML) 
+	public String readEmployees() 
+	{ 
+		return employeeObj.readEmployees(); 
+	} 
+	
+	
+	@POST
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String insertEmployee(
+		 @FormParam("empCode") String empCode, 
+		 @FormParam("empName") String empName, 
+		 @FormParam("empEmail") String empEmail, 
+		 @FormParam("empAge") String empAge,
+		 @FormParam("empAddress") String empAddress,
+		 @FormParam("empRole") String empRole,
+		 @FormParam("jobStartedDate") String jobStartedDate) 
+	{ 
+		String output = employeeObj.insertEmployee(empCode, empName, empEmail, empAge, empAddress, empRole, jobStartedDate); 
+		return output; 
+	}
 }
