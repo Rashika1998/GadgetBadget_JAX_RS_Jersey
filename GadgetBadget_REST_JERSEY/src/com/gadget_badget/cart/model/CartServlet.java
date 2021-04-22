@@ -70,6 +70,35 @@ public class CartServlet
 			 String script_1 = "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>";
 			 String script_2 = "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>";
 			 
+             String header = "<nav class='navbar navbar-inverse'>"
+             + "<div class='container-fluid'>"
+             + "<div class='navbar-header'>"
+             + "<a class='navbar-brand' href='#'>GadgetBadget</a>"
+             + "</div>"
+             + "<ul class='nav navbar-nav'>"
+             + "<li class='active'><a href='#'>Home</a></li>"
+             + "<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'>Category<span class='caret'></span></a>"
+             + "<ul class='dropdown-menu'>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects'>UI Design</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts'>Back End</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders'>UI/UX</a></li>"
+             + "</ul>"
+             + "</li>"
+             + ""
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Projects'>Products</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Carts'>Cart</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Orders'>Order</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/myService/Employees'>Employees</a></li>"
+             + "<li><a href='#'>Contact Us</a></li>"
+             + "<li><a href='#'>About Us</a></li>"
+             + ""
+             + "</ul>"
+             + "<ul class='nav navbar-nav navbar-right'>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/SignUp.jsp'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
+             + "<li><a href='http://localhost:9002/GadgetBadget_REST_JERSEY/SignIn.jsp'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>"
+             + "</ul>"
+             + "</div>"
+             + "</nav>";
 			 
 			 try
 			 { 
@@ -86,7 +115,7 @@ public class CartServlet
 				 output = "Error while reading the project details...!"; 
 				 System.err.println(e.getMessage()); 
 			 } 
-		 	 return output; 
+		 	 return output;  
 		 } 
 
 } 
