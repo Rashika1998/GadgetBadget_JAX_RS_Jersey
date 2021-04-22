@@ -35,7 +35,25 @@ public class CartServlet
 					 return "Error while connecting to the database for inserting."; 
 				 } 
 
-                 
+                  // create a prepared statement
+                    String query = " INSERT INTO cart_tab(`cartID`,`cartCode`,`projectCode`,`projectName`,`projectQty`,`projectUnitPrice`,`customerID`)"
+                    + " VALUES (?, ?, ?, ?, ? ,? ,?)"; 
+                    PreparedStatement preparedStmt = con.prepareStatement(query); 
+                    
+                    
+                    // binding values
+                    preparedStmt.setInt(1, 0); 
+                    preparedStmt.setString(2, cart_code); 
+                    preparedStmt.setString(3, project_code); 
+                    preparedStmt.setString(4, project_name);
+                    preparedStmt.setDouble(5, Double.parseDouble(project_qty)); 
+                    preparedStmt.setDouble(6, Double.parseDouble(project_unit_price)); 
+                    preparedStmt.setString(7, customer_id); 
+                    
+                
+                    preparedStmt.execute(); 
+                    con.close(); 
+                    output = "Project has been added into the cart successfully..!"; 
 			 } 
 			 catch (Exception e) 
 			 { 
