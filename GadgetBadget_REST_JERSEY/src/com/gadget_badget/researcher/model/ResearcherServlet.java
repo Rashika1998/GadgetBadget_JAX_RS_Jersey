@@ -10,6 +10,7 @@ public class ResearcherServlet
 {
 	
 	//A common method to connect to the DB
+	//Connection 
 	private Connection connect() 
 	{ 
 		Connection con = null; 
