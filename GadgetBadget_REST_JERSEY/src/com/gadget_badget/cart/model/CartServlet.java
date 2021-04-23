@@ -158,4 +158,40 @@ public class CartServlet
 		 	 return output;  
 		 } 
 
-} 
+         		public String updateCart(String cart_id, String cart_code, String project_code, String project_name, String project_qty , String project_unit_price , String customer_id)
+		{ 
+			 String output = ""; 
+			 try
+			 { 
+				 Connection con = connect(); 
+				 if (con == null) 
+				 {
+					 return "Error while connecting to the database for updating."; 
+				 } 
+				 // create a prepared statement
+				 String query = "UPDATE cart_tab SET cartCode=? , projectCode=? , projectName=? , projectQty=? , projectUnitPrice=? , customerID=?  WHERE cartID=?"; 
+				 PreparedStatement preparedStmt = con.prepareStatement(query); 
+				 // binding values
+				 preparedStmt.setString(1, cart_code); 
+				 preparedStmt.setString(2, project_code); 
+				 preparedStmt.setString(3, project_name); 
+				 preparedStmt.setDouble(4, Double.parseDouble(project_qty)); 
+				 preparedStmt.setDouble(5, Double.parseDouble(project_unit_price)); 
+				 preparedStmt.setString(6, customer_id); 
+				 preparedStmt.setInt(7, Integer.parseInt(cart_id)); 
+				 
+				 // execute the statement
+				 preparedStmt.execute(); 
+				 con.close(); 
+				 output = "Project details have been updated in cart successfully...!"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while updating cart details...!"; 
+				 System.err.println(e.getMessage()); 
+			 } 
+			 	return output; 
+			 } 
+		
+		
+		
