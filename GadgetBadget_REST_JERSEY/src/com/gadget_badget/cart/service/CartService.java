@@ -21,6 +21,15 @@ import com.google.gson.JsonParser;
 @Path("/Carts") 
 public class CartService 
 {
+	CartServlet cartObj = new CartServlet(); 
+	
+	@GET
+	@Path("/") 
+	@Produces(MediaType.TEXT_HTML) 
+	public String readCart() 
+	{ 
+		return cartObj.readCart(); 
+	} 
 	
 	
 }
