@@ -31,5 +31,21 @@ public class CartService
 		return cartObj.readCart(); 
 	} 
 	
+    @POST
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String insertCart(
+		 @FormParam("cartCode") String cartCode, 
+		 @FormParam("projectCode") String projectCode, 
+		 @FormParam("projectName") String projectName, 
+		 @FormParam("projectQty") String projectQty,
+		 @FormParam("projectUnitPrice") String projectUnitPrice,
+		 @FormParam("customerID") String customerID)
+		 
+	{ 
+		String output = cartObj.insertCart(cartCode, projectCode, projectName, projectQty, projectUnitPrice, customerID); 
+		return output; 
+	}
 	
 }
