@@ -33,9 +33,11 @@ public class ResearcherServlet
 			 String output = ""; 
 			 try
 			 { 
+				 //connection
 				 Connection con = connect(); 
 				 if (con == null) 
 				 {
+					 
 					 return "Error while connecting to the database for inserting."; 
 				 } 
 			 	 	 // create a prepared statement
@@ -115,6 +117,7 @@ public class ResearcherServlet
 			 
 			 try
 			 { 
+				 //connection
 				 Connection con = connect(); 
 				 if (con == null) 
 				 {return "Error while connecting to the database for reading."; } 
@@ -174,12 +177,13 @@ public class ResearcherServlet
 		 } 
 		
 		
-		//Updating a researcher
+		//Updating a researcher details
 		public String updateResearcher(String res_id, String res_code, String res_name, String res_email, String res_age, String res_address , String res_role , String join_date)
 		{ 
 			 String output = ""; 
 			 try
 			 { 
+				 //connection
 				 Connection con = connect(); 
 				 if (con == null) 
 				 {
@@ -212,7 +216,7 @@ public class ResearcherServlet
 			 } 
 		
 		
-		
+			//function for deleting a researcher details
 			 public String deleteResearcher(String resID) 
 			 { 
 				 String output = ""; 
