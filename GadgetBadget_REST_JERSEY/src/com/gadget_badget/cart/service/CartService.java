@@ -47,5 +47,27 @@ public class CartService
 		String output = cartObj.insertCart(cartCode, projectCode, projectName, projectQty, projectUnitPrice, customerID); 
 		return output; 
 	}
+
+    	@PUT
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_JSON) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String updateCart(String cartData) 
+	{ 
+		//Convert the input string to a JSON object 
+		 JsonObject cartObject = new JsonParser().parse(cartData).getAsJsonObject(); 
+		//Read the values from the JSON object
+		 String cartID = cartObject.get("cartID").getAsString(); 
+		 String cartCode = cartObject.get("cartCode").getAsString(); 
+		 String projectCode = cartObject.get("projectCode").getAsString(); 
+		 String projectName = cartObject.get("projectName").getAsString(); 
+		 String projectQty = cartObject.get("projectQty").getAsString(); 
+		 String projectUnitPrice = cartObject.get("projectUnitPrice").getAsString(); 
+		 String customerID = cartObject.get("customerID").getAsString(); 
+		 
+		 String output = cartObj.updateCart(cartID, cartCode, projectCode, projectName, projectQty, projectUnitPrice, customerID); 
+		 return output; 
+	}
+	
 	
 }
