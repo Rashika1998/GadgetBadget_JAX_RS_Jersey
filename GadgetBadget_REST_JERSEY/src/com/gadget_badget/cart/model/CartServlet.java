@@ -102,13 +102,53 @@ public class CartServlet
 			 
 			 try
 			 { 
-				 Connection con = connect(); 
-				 if (con == null) 
-				 {return "Error while connecting to the database for reading."; } 
-				 
-				 	 con.close(); 
-				 	 // Complete the html table
-				 	 output += "</table></div>"; 
+                Connection con = connect(); 
+                if (con == null) 
+                {return "Error while connecting to the database for reading."; } 
+                // Prepare the html table to be displayed
+                output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
+                + "<th style='padding:10px; text-align:center;'>Cart Code</th>"
+                + "<th style='padding:10px; text-align:center;'>Project Code</th>" +
+                "<th style='padding:10px; text-align:center;'>Project Name</th>" + 
+                "<th style='padding:10px; text-align:center;'>Project Quentity</th>" + 
+                "<th style='padding:10px; text-align:center;'>Project Unit Price</th>" +
+                "<th style='padding:10px; text-align:center;'>Customer ID</th>" +
+                "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
+            
+                String query = "SELECT * FROM cart_tab"; 
+                Statement stmt = con.createStatement(); 
+                ResultSet rs = stmt.executeQuery(query); 
+                // iterate through the rows in the result set
+                while (rs.next()) 
+                { 
+                    String cartID = Integer.toString(rs.getInt("cartID")); 
+                    String cartCode = rs.getString("cartCode"); 
+                    String projectCode = rs.getString("projectCode"); 
+                    String projectName = rs.getString("projectName"); 
+                    String projectQty = Double.toString(rs.getDouble("projectQty")); 
+                    String projectUnitPrice = Double.toString(rs.getDouble("projectUnitPrice")); 
+                    String customerID = rs.getString("customerID"); 
+                    
+                    
+                    // Add into the html table
+                    output += "<tr><td style='padding:10px; text-align:center;'>" + cartCode + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectCode + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectName + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectQty + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + projectUnitPrice + "</td>"; 
+                    output += "<td style='padding:10px; text-align:center;'>" + customerID + "</td>"; 
+                    
+                    
+                    // buttons
+                    output += "<td style='padding:10px; text-align:center;'><input name='btnUpdate' type='button' value='Update' class='btn btn-info'></td>"
+                    + "<td style='padding:10px; text-align:center;'><form method='post' action='items.jsp'>"
+                    + "<input style='margin-top:15px' name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
+                    + "<input name='itemID' type='hidden' value='" + cartID 
+                    + "'>" + "</form></td></tr>"; 
+                } 
+                     con.close(); 
+                     // Complete the html table
+                     output += "</table></div>";
 			 } 
 			 catch (Exception e) 
 			 { 
@@ -118,4 +158,69 @@ public class CartServlet
 		 	 return output;  
 		 } 
 
-} 
+         		public String updateCart(String cart_id, String cart_code, String project_code, String project_name, String project_qty , String project_unit_price , String customer_id)
+		{ 
+			 String output = ""; 
+			 try
+			 { 
+				 Connection con = connect(); 
+				 if (con == null) 
+				 {
+					 return "Error while connecting to the database for updating."; 
+				 } 
+				 // create a prepared statement
+				 String query = "UPDATE cart_tab SET cartCode=? , projectCode=? , projectName=? , projectQty=? , projectUnitPrice=? , customerID=?  WHERE cartID=?"; 
+				 PreparedStatement preparedStmt = con.prepareStatement(query); 
+				 // binding values
+				 preparedStmt.setString(1, cart_code); 
+				 preparedStmt.setString(2, project_code); 
+				 preparedStmt.setString(3, project_name); 
+				 preparedStmt.setDouble(4, Double.parseDouble(project_qty)); 
+				 preparedStmt.setDouble(5, Double.parseDouble(project_unit_price)); 
+				 preparedStmt.setString(6, customer_id); 
+				 preparedStmt.setInt(7, Integer.parseInt(cart_id)); 
+				 
+				 // execute the statement
+				 preparedStmt.execute(); 
+				 con.close(); 
+				 output = "Project details have been updated in cart successfully...!"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while updating cart details...!"; 
+				 System.err.println(e.getMessage()); 
+			 } 
+			 	return output; 
+			 } 
+
+              public String deleteCart(String cartID) 
+			 { 
+				 String output = ""; 
+			 try
+			 { 
+				 Connection con = connect(); 
+			 if (con == null) 
+			 {
+				 return "Error while connecting to the database for deleting."; 
+			 } 
+			 
+			 	 // create a prepared statement
+				 String query = "DELETE FROM cart_tab WHERE cartID=?"; 
+				 PreparedStatement preparedStmt = con.prepareStatement(query); 
+				 // binding values
+				 preparedStmt.setInt(1, Integer.parseInt(cartID)); 
+				 // execute the statement
+				 preparedStmt.execute(); 
+				 con.close(); 
+				 output = "Project has been deleted from cart successfully"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while deleting the project from the cart."; 
+				 System.err.println(e.getMessage()); 
+			 } 
+			 return output; 
+			 } 
+		
+		
+		
