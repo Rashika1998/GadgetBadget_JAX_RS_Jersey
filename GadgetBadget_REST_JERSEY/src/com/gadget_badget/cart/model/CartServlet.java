@@ -192,6 +192,35 @@ public class CartServlet
 			 } 
 			 	return output; 
 			 } 
+
+              public String deleteCart(String cartID) 
+			 { 
+				 String output = ""; 
+			 try
+			 { 
+				 Connection con = connect(); 
+			 if (con == null) 
+			 {
+				 return "Error while connecting to the database for deleting."; 
+			 } 
+			 
+			 	 // create a prepared statement
+				 String query = "DELETE FROM cart_tab WHERE cartID=?"; 
+				 PreparedStatement preparedStmt = con.prepareStatement(query); 
+				 // binding values
+				 preparedStmt.setInt(1, Integer.parseInt(cartID)); 
+				 // execute the statement
+				 preparedStmt.execute(); 
+				 con.close(); 
+				 output = "Project has been deleted from cart successfully"; 
+			 } 
+			 catch (Exception e) 
+			 { 
+				 output = "Error while deleting the project from the cart."; 
+				 System.err.println(e.getMessage()); 
+			 } 
+			 return output; 
+			 } 
 		
 		
 		
