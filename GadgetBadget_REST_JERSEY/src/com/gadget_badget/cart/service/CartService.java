@@ -69,5 +69,21 @@ public class CartService
 		 return output; 
 	}
 	
+    	
+	@DELETE
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_XML) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String deleteCart(String cartData) 
+	{ 
+		//Convert the input string to an XML document
+		 Document doc = Jsoup.parse(cartData, "", Parser.xmlParser()); 
+		 
+		//Read the value from the element <itemID>
+		 String cartID = doc.select("cartID").text(); 
+		 String output = cartObj.deleteCart(cartID); 
+		 return output; 
+	}
+
 	
 }
