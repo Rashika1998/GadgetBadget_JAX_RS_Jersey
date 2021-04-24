@@ -22,9 +22,11 @@ import com.google.gson.JsonParser;
 public class ResearcherService 
 {
 	
+	//creating a researcher object
 	ResearcherServlet researcherObj = new ResearcherServlet(); 
 	
 	//Service for displaying all the researchers
+	//calling readResearchers() function
 	@GET
 	@Path("/") 
 	@Produces(MediaType.TEXT_HTML) 
@@ -36,6 +38,7 @@ public class ResearcherService
 	
 	
 	//Service for inserting any researcher into the system
+	//calling insertResearcher() function
 	@POST
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
@@ -57,6 +60,7 @@ public class ResearcherService
 	
 	
 	//Service for updating any researcher's data
+	//calling updateResearcher() function
 	@PUT
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_JSON) 
@@ -82,6 +86,7 @@ public class ResearcherService
 	
 	
 	//Service for deleting any researcher's record
+	//calling deleteResearcher() function
 	@DELETE
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 
