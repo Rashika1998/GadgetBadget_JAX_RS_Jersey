@@ -5,33 +5,24 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.gadget_badget.configuration.DBConnection;
 
 public class EmployeeServlet 
 {
-	//A common method to connect to the DB
-	private Connection connect() 
-	{ 
-		Connection connection = null; 
-		try { 
-			Class.forName("com.mysql.jdbc.Driver");	
-			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget_rest_jersey", "root", ""); 
-		} catch (Exception e) 
-		{e.printStackTrace();} 
-		return connection; 
-	}
+	private static Connection connection; 
 
 	public String insertEmployee(String emp_code, String emp_name, String emp_email, String emp_age , String emp_address , String emp_role , String job_started_date) 
 	{ 
 		String output = ""; 
 		try { 
-			Connection con = connect(); 
-			if (con == null) {
+			connection = DBConnection.getDBConnection();
+			if (connection == null) {
 				return "Error while connecting to the database for inserting."; 
 			} 
 			// create a prepared statement
 			String query = " INSERT INTO employee_tab(`empID`,`empCode`,`empName`,`empEmail`,`empAge`,`empAddress`,`empRole`,`jobStartedDate`)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,? ,?)"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			
 			
 			// binding values
@@ -46,7 +37,7 @@ public class EmployeeServlet
 			
 		
 			preparedStmt.execute(); 
-			con.close(); 
+			connection.close(); 
 			output = "Employee details have been inserted successfully..!"; 
 		} catch (Exception e)  { 
 			output = "Error while inserting the employee details..!."; 
@@ -98,7 +89,7 @@ public class EmployeeServlet
 		
 		
 		try { 
-			Connection connection = connect(); 
+			connection = DBConnection.getDBConnection();
 			if (connection == null) 
 			{return "Error while connecting to the database for reading."; } 
 			// Prepare the html table to be displayed
@@ -157,13 +148,13 @@ public class EmployeeServlet
 	{ 
 		String output = ""; 
 		try { 
-			Connection con = connect(); 
-			if (con == null)  {
+			connection = DBConnection.getDBConnection();
+			if (connection == null)  {
 				return "Error while connecting to the database for updating."; 
 			} 
 			// create a prepared statement
 			String query = "UPDATE employee_tab SET empCode=? , empName=? , empEmail=? , empAge=? , empAddress=? , empRole=? , jobStartedDate=?  WHERE empID=?"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			// binding values
 			preparedStmt.setString(1, emp_code); 
 			preparedStmt.setString(2, emp_name); 
@@ -176,7 +167,7 @@ public class EmployeeServlet
 			
 			// execute the statement
 			preparedStmt.execute(); 
-			con.close(); 
+			connection.close(); 
 			output = "Employee details have been updated successfully...!"; 
 		} catch (Exception e)  { 
 			output = "Error while updating employee details...!"; 
@@ -190,19 +181,19 @@ public class EmployeeServlet
 	{ 
 		String output = ""; 
 		try { 
-			Connection con = connect(); 
-		if (con == null)  {
+			connection = DBConnection.getDBConnection();
+		if (connection == null)  {
 			return "Error while connecting to the database for deleting."; 
 		} 
 		
 		// create a prepared statement
 		String query = "DELETE FROM employee_tab WHERE empID=?"; 
-		PreparedStatement preparedStmt = con.prepareStatement(query); 
+		PreparedStatement preparedStmt = connection.prepareStatement(query); 
 		// binding values
 		preparedStmt.setInt(1, Integer.parseInt(empID)); 
 		// execute the statement
 		preparedStmt.execute(); 
-		con.close(); 
+		connection.close(); 
 		output = "Employee has been deleted successfully"; 
 		} 
 		catch (Exception e)  { 

@@ -1,39 +1,24 @@
 package com.gadget_badget.projects.model;
 
 import java.sql.*;
+import com.gadget_badget.configuration.DBConnection;
 
 public class ProjectServlet 
 {
-	
-	//A common method to connect to the DB
-	private Connection connect() 
-	{ 
-		Connection con = null; 
-		try
-		{ 
-			Class.forName("com.mysql.jdbc.Driver"); 
-				
-				//Provide the correct details: DBServer/DBName, username, password 
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget_rest_jersey", "root", "issa123"); 
-		}  catch (Exception e)  {e.printStackTrace();} 
-		return con; 
-	} 
-	
-	
-	
+	private static Connection connection;
 	
 	public String insertProject(String p_code, String p_name, String p_desc, String p_dev_by , String p_price , String p_category , String p_service_charge) 
 	{ 
 		String output = ""; 
 		try { 
-			Connection con = connect(); 
-			if (con == null)  {
+			connection = DBConnection.getDBConnection();
+			if (connection == null)  {
 				return "Error while connecting to the database for inserting."; 
 			} 
 			// create a prepared statement
 			String query = " INSERT INTO project_tab(`projectID`,`projectCode`,`projectName`,`projectDesc`,`projectDevBy`,`projectPrice`,`projectCategory`,`projectServiceCharge`)"
 			+ " VALUES (?, ?, ?, ?, ? ,? ,? ,?)"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			
 			// binding values
 			preparedStmt.setInt(1, 0); 
@@ -47,7 +32,7 @@ public class ProjectServlet
 			
 		
 			preparedStmt.execute(); 
-			con.close(); 
+			connection.close(); 
 			output = "Project details have been inserted successfully..!"; 
 		} catch (Exception e)  { 
 			output = "Error while inserting the project details..!."; 
@@ -103,8 +88,8 @@ public class ProjectServlet
 		
 		
 		try { 
-			Connection con = connect(); 
-			if (con == null) 
+			connection = DBConnection.getDBConnection();
+			if (connection == null) 
 			{return "Error while connecting to the database for reading."; } 
 			// Prepare the html table to be displayed
 			
@@ -119,7 +104,7 @@ public class ProjectServlet
 			"<th style='padding:10px; text-align:center;'>Update</th><th>Remove</th></tr>"; 
 		
 			String query = "SELECT * FROM project_tab"; 
-			Statement stmt = con.createStatement(); 
+			Statement stmt = connection.createStatement(); 
 			ResultSet rs = stmt.executeQuery(query); 
 			// iterate through the rows in the result set
 			while (rs.next()) 
@@ -149,7 +134,7 @@ public class ProjectServlet
 				+ "<input name='itemID' type='hidden' value='" + projectID 
 				+ "'>" + "</form></td></tr>"; 
 			} 
-				con.close(); 
+				connection.close(); 
 				// Complete the html table
 				output += "</table></div>"; 
 		} 
@@ -206,8 +191,8 @@ public class ProjectServlet
 		
 		try
 		{ 
-			Connection con = connect(); 
-			if (con == null) 
+			connection = DBConnection.getDBConnection();
+			if (connection == null) 
 			{return "Error while connecting to the database for reading."; } 
 			// Prepare the html table to be displayed
 			
@@ -225,7 +210,7 @@ public class ProjectServlet
 			//"<th>Update</th><th>Remove</th></tr>"; 
 		
 			String query = "SELECT * FROM project_tab"; 
-			Statement stmt = con.createStatement(); 
+			Statement stmt = connection.createStatement(); 
 			ResultSet rs = stmt.executeQuery(query); 
 			// iterate through the rows in the result set
 			while (rs.next()) 
@@ -257,7 +242,7 @@ public class ProjectServlet
 				//+ "<input name='itemID' type='hidden' value='" + projectID 
 				//+ "'>" + "</form></td></tr>"; 
 			} 
-				con.close(); 
+				connection.close(); 
 				// Complete the html table
 				output += "</table></div>"; 
 		} 
@@ -274,14 +259,14 @@ public String updateProject(String p_ID, String p_code, String p_name, String p_
 	String output = ""; 
 	try
 	{ 
-		Connection con = connect(); 
-		if (con == null) 
+		connection = DBConnection.getDBConnection();
+		if (connection == null) 
 		{
 			return "Error while connecting to the database for updating."; 
 		} 
 		// create a prepared statement
 		String query = "UPDATE project_tab SET projectCode=? , projectName=? , projectDesc=? , projectDevBy=? , projectPrice=? , projectCategory=? , projectServiceCharge=?  WHERE projectID=?"; 
-		PreparedStatement preparedStmt = con.prepareStatement(query); 
+		PreparedStatement preparedStmt = connection.prepareStatement(query); 
 		// binding values
 		preparedStmt.setString(1, p_code); 
 		preparedStmt.setString(2, p_name); 
@@ -294,7 +279,7 @@ public String updateProject(String p_ID, String p_code, String p_name, String p_
 		
 		// execute the statement
 		preparedStmt.execute(); 
-		con.close(); 
+		connection.close(); 
 		output = "Project details have been updated successfully...!"; 
 	} 
 	catch (Exception e) 
@@ -312,20 +297,20 @@ public String updateProject(String p_ID, String p_code, String p_name, String p_
 		String output = ""; 
 		try
 		{ 
-			Connection con = connect(); 
-		if (con == null) 
+			connection = DBConnection.getDBConnection();
+		if (connection == null) 
 		{
 			return "Error while connecting to the database for deleting."; 
 		} 
 		
 			// create a prepared statement
 			String query = "DELETE FROM project_tab WHERE projectID=?"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			// binding values
 			preparedStmt.setInt(1, Integer.parseInt(projectID)); 
 			// execute the statement
 			preparedStmt.execute(); 
-			con.close(); 
+			connection.close(); 
 			output = "Project has been deleted successfully"; 
 		} 
 		catch (Exception e) 

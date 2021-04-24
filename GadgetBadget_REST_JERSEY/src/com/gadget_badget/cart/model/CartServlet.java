@@ -6,35 +6,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.gadget_badget.configuration.DBConnection;
+
 public class CartServlet 
 {
-		private Connection connect() 
-		{ 
-			Connection con = null; 
-			try { 
-				Class.forName("com.mysql.jdbc.Driver"); 
-				 
-				 //Provide the correct details: DBServer/DBName, username, password 
-				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget_rest_jersey", "root", ""); 
-			}  catch (Exception e) 
-			{e.printStackTrace();} 
-			 	return con; 
-	    } 
+	private static Connection connection; 
 
 
 	    public String insertCart(String cart_code, String project_code, String project_name, String project_qty , String project_unit_price , String customer_id) 
 	    { 
 	            String output = ""; 
 	            try  { 
-	                Connection con = connect(); 
-	                if (con == null)  {
+	            	connection = DBConnection.getDBConnection();
+	                if (connection == null)  {
 	                    return "Error while connecting to the database for inserting."; 
 	                } 
 	
 	                // create a prepared statement
 	                String query = " INSERT INTO cart_tab(`cartID`,`cartCode`,`projectCode`,`projectName`,`projectQty`,`projectUnitPrice`,`customerID`)"
 	                + " VALUES (?, ?, ?, ?, ? ,? ,?)"; 
-	                PreparedStatement preparedStmt = con.prepareStatement(query); 
+	                PreparedStatement preparedStmt = connection.prepareStatement(query); 
 	                
 	                // binding values
 	                preparedStmt.setInt(1, 0); 
@@ -47,7 +38,7 @@ public class CartServlet
 	                
 	            
 	                preparedStmt.execute(); 
-	                con.close(); 
+	                connection.close(); 
 	                output = "Project has been added into the cart successfully..!"; 
 	            }   catch (Exception e)  { 
 	                output = "Error while inserting the project into the cart..!."; 
@@ -97,8 +88,8 @@ public class CartServlet
              + "</nav>";
 			 
 			 try { 
-                Connection con = connect(); 
-                if (con == null) 
+                connection = DBConnection.getDBConnection();
+                if (connection == null) 
                 {return "Error while connecting to the database for reading."; } 
                 // Prepare the html table to be displayed
                 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header + "<div class='container'><table border='1' style='text-align:center'><tr>"
@@ -111,7 +102,7 @@ public class CartServlet
                 "<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
             
                 String query = "SELECT * FROM cart_tab"; 
-                Statement stmt = con.createStatement(); 
+                Statement stmt = connection.createStatement(); 
                 ResultSet rs = stmt.executeQuery(query); 
                 // iterate through the rows in the result set
                 while (rs.next()) 
@@ -141,7 +132,7 @@ public class CartServlet
                     + "<input name='itemID' type='hidden' value='" + cartID 
                     + "'>" + "</form></td></tr>"; 
                 } 
-                     con.close(); 
+                     connection.close(); 
                      // Complete the html table
                      output += "</table></div>";
 			 } 
@@ -157,13 +148,13 @@ public class CartServlet
 		{ 
 			 String output = ""; 
 			 try { 
-				 Connection con = connect(); 
-				 if (con == null)  {
+				 connection = DBConnection.getDBConnection();
+				 if (connection == null)  {
 					 return "Error while connecting to the database for updating."; 
 				 } 
 				 // create a prepared statement
 				 String query = "UPDATE cart_tab SET cartCode=? , projectCode=? , projectName=? , projectQty=? , projectUnitPrice=? , customerID=?  WHERE cartID=?"; 
-				 PreparedStatement preparedStmt = con.prepareStatement(query); 
+				 PreparedStatement preparedStmt = connection.prepareStatement(query); 
 				 // binding values
 				 preparedStmt.setString(1, cart_code); 
 				 preparedStmt.setString(2, project_code); 
@@ -175,7 +166,7 @@ public class CartServlet
 				 
 				 // execute the statement
 				 preparedStmt.execute(); 
-				 con.close(); 
+				 connection.close(); 
 				 output = "Project details have been updated in cart successfully...!"; 
 			 } 
 			 catch (Exception e)  { 
@@ -188,18 +179,18 @@ public class CartServlet
           public String deleteCart(String cartID)  { 
 			 String output = ""; 
 			 try  { 
-				 Connection con = connect(); 
-			 if (con == null)   {
+				 connection = DBConnection.getDBConnection();
+			 if (connection == null)   {
 				 return "Error while connecting to the database for deleting."; 
 			 } 
 		 	 // create a prepared statement
 			 String query = "DELETE FROM cart_tab WHERE cartID=?"; 
-			 PreparedStatement preparedStmt = con.prepareStatement(query); 
+			 PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			 // binding values
 			 preparedStmt.setInt(1, Integer.parseInt(cartID)); 
 			 // execute the statement
 			 preparedStmt.execute(); 
-			 con.close(); 
+			 connection.close(); 
 			 output = "Project has been deleted from cart successfully"; 
 			 }  catch (Exception e)  { 
 				 output = "Error while deleting the project from the cart."; 

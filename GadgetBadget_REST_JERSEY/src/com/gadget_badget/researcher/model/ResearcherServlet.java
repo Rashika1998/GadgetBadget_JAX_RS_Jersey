@@ -5,26 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.gadget_badget.configuration.DBConnection;
 
 public class ResearcherServlet 
 {
 	
-	//A common method to connect to the DB
-	//Connection method
-	private Connection connect() 
-	{ 
-		Connection con = null; 
-		try
-		{ 
-			Class.forName("com.mysql.jdbc.Driver"); 
-			 
-			 //Provide the correct details: DBServer/DBName, username, password 
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget_rest_jersey", "root", "issa123"); 
-		} 
-		catch (Exception e) 
-		{e.printStackTrace();} 
-		 	return con; 
-		} 
+	private static Connection connection; 
 	
 	
 	
@@ -34,15 +20,15 @@ public class ResearcherServlet
 			String output = ""; 
 			try { 
 				//connection
-				Connection con = connect(); 
-				if (con == null) 
+				connection = DBConnection.getDBConnection();
+				if (connection == null) 
 				{
 					return "Error while connecting to the database for inserting."; 
 				} 
 				// create a prepared statement
 				String query = " INSERT INTO researcher_tab(`resID`,`resCode`,`resName`,`resEmail`,`resAge`,`resAddress`,`resRole`,`joinDate`)"
 				+ " VALUES (?, ?, ?, ?, ? ,? ,? ,?)"; 
-				PreparedStatement preparedStmt = con.prepareStatement(query); 
+				PreparedStatement preparedStmt = connection.prepareStatement(query); 
 				
 				
 				// binding values
@@ -57,7 +43,7 @@ public class ResearcherServlet
 				
 			
 				preparedStmt.execute(); 
-				con.close(); 
+				connection.close(); 
 				output = "Researcher details have been inserted successfully..!"; 
 			} catch (Exception e)  { 
 				output = "Error while inserting the researcher details..!."; 
@@ -115,8 +101,8 @@ public class ResearcherServlet
 		try
 		{ 
 			//connection
-			Connection con = connect(); 
-			if (con == null) 
+			connection = DBConnection.getDBConnection();
+			if (connection == null) 
 			{return "Error while connecting to the database for reading."; } 
 			// Prepare the html table to be displayed
 			
@@ -131,7 +117,7 @@ public class ResearcherServlet
 			"<th style='padding:10px; text-align:center;'>Update</th><th style='padding:10px; text-align:center;'>Remove</th></tr>"; 
 		
 			String query = "SELECT * FROM researcher_tab"; 
-			Statement stmt = con.createStatement(); 
+			Statement stmt = connection.createStatement(); 
 			ResultSet rs = stmt.executeQuery(query); 
 			// iterate through the rows in the result set
 			while (rs.next()) 
@@ -161,7 +147,7 @@ public class ResearcherServlet
 				+ "<input name='itemID' type='hidden' value='" + resID 
 				+ "'>" + "</form></td></tr>"; 
 			} 
-				con.close(); 
+				connection.close(); 
 				// Complete the html table
 				output += "</table></div>"; 
 		} 
@@ -181,14 +167,14 @@ public String updateResearcher(String res_id, String res_code, String res_name, 
 	try
 	{ 
 		//connection
-		Connection con = connect(); 
-		if (con == null) 
+		connection = DBConnection.getDBConnection();
+		if (connection == null) 
 		{
 			return "Error while connecting to the database for updating."; 
 		} 
 		// create a prepared statement
 		String query = "UPDATE researcher_tab SET resCode=? , resName=? , resEmail=? , resAge=? , resAddress=? , resRole=? , joinDate=?  WHERE resID=?"; 
-		PreparedStatement preparedStmt = con.prepareStatement(query); 
+		PreparedStatement preparedStmt = connection.prepareStatement(query); 
 		// binding values
 		preparedStmt.setString(1, res_code); 
 		preparedStmt.setString(2, res_name); 
@@ -201,7 +187,7 @@ public String updateResearcher(String res_id, String res_code, String res_name, 
 		
 		// execute the statement
 		preparedStmt.execute(); 
-		con.close(); 
+		connection.close(); 
 		output = "Researcher details have been updated successfully...!"; 
 	} 
 	catch (Exception e) 
@@ -219,20 +205,20 @@ public String updateResearcher(String res_id, String res_code, String res_name, 
 		String output = ""; 
 		try
 		{ 
-			Connection con = connect(); 
-		if (con == null) 
+			connection = DBConnection.getDBConnection();
+		if (connection == null) 
 		{
 			return "Error while connecting to the database for deleting."; 
 		} 
 		
 			// create a prepared statement
 			String query = "DELETE FROM researcher_tab WHERE resID=?"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = connection.prepareStatement(query); 
 			// binding values
 			preparedStmt.setInt(1, Integer.parseInt(resID)); 
 			// execute the statement
 			preparedStmt.execute(); 
-			con.close(); 
+			connection.close(); 
 			output = "Researcher has been deleted successfully"; 
 		} 
 		catch (Exception e) 
