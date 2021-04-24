@@ -23,9 +23,9 @@
 		      <li class="active"><a href="/">Home</a></li>
 		      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
 		        <ul class="dropdown-menu">
-		          <li><a href="myService/Projects/onlyDetails">Products</a></li>
-		          <li><a href="myService/Projects/onlyDetails">Projects</a></li>
-		          <li><a href="myService/Projects/onlyDetails">Projects</a></li>
+		          <li><a href="myService/Projects/onlyDetails">UI/UX design</a></li>
+		          <li><a href="myService/Projects/onlyDetails">Backend Developer</a></li>
+		          <li><a href="myService/Projects/onlyDetails">Frontend Developer</a></li>
 		        </ul>
 		      </li>
 		 
@@ -46,7 +46,10 @@
 
 
 	<div class="container">
-		<h1>Welcome to GadgetBadget</h1>
+		<h1 style="color:grey;">Welcome to GadgetBadget</h1>
+		<a href="adminPanal.jsp"><button class="bti btn-danger" style="padding:10px;">To Administrator</button></a>
+		<br><br>
+		<p style="color:grey;">Go to the admin panal to manage all the details</p>
 	</div>
 	
 </body>
