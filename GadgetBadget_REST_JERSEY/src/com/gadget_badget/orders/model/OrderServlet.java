@@ -6,24 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.gadget_badget.configuration.DBConnection;
+
 public class OrderServlet 
 {
-		// Common for every function
-		private Connection connect()  { 
-			Connection connection = null; 
-			try { 
-				Class.forName("com.mysql.jdbc.Driver"); 
-				// Change your configurations settings
-				connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget_rest_jersey", "root", "issa123"); 
-			} catch (Exception e)  {e.printStackTrace();} 
-			 	return connection; 
-		}   
+		private static Connection connection;
 		
 		public String insertOrder(String order_code, String customer_id, String customer_email, String customer_name, String order_total_amount, String card_no, String cvv_no) 
 		 { 
 			 String output = ""; 
 			 try { 
-				 Connection connection = connect(); 
+				 connection = DBConnection.getDBConnection();
 				 if (connection == null)  {
 					 return "Error while connecting to the database for inserting."; 
 				 } 
@@ -93,7 +86,7 @@ public class OrderServlet
 			 		+ "</nav>";
 			 
 			 try  { 
-				 Connection connection = connect(); 
+				 connection = DBConnection.getDBConnection();
 				 if (connection == null)  {return "Error while connecting to the database for reading."; } 
 
 				 output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 +  "</head>" + header +  "<div class='container'><table border='1' style='text-align:center'><tr>"
@@ -148,7 +141,7 @@ public class OrderServlet
 		{ 
 			 String output = ""; 
 			 try { 
-				 Connection connection = connect(); 
+				 connection = DBConnection.getDBConnection();
 				 if (connection == null)  {
 					 return "Error while connecting to the database for updating."; 
 				 } 
@@ -180,7 +173,7 @@ public class OrderServlet
 		{ 
 			 String output = ""; 
 			 try { 
-				 Connection connection = connect(); 
+				 connection = DBConnection.getDBConnection();
 				 if (connection == null)  {
 					 return "Error while connecting to the database for deleting."; 
 				 } 
