@@ -28,7 +28,7 @@ public class OrderService
 	@Produces(MediaType.TEXT_HTML) 
 	public String readOrder() 
 	{ 
-		return orderObj.readOrder(); 
+		return orderServlet.readOrder(); 
 	} 
 	
 	@POST
