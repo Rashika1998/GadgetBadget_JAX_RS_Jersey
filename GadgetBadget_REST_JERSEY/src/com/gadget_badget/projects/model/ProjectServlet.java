@@ -173,16 +173,14 @@ public class ProjectServlet
 			+ "</ul>"
 			+ "</li>"
 			+ ""
-			
 			+ "<li><a href='myService/Carts'>Cart</a></li>"
-			
 			+ "<li><a href='#'>Contact Us</a></li>"
 			+ "<li><a href='#'>About Us</a></li>"
 			+ ""
 			+ "</ul>"
 			+ "<ul class='nav navbar-nav navbar-right'>"
-			+ "<li><a href='#'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
-			+ "<li><a href='#'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>"
+			+ "<li><a href='SignUp.jsp'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>"
+			+ "<li><a href='SignIn.jsp'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>"
 			+ "</ul>"
 			+ "</div>"
 			+ "</nav>";
@@ -198,13 +196,13 @@ public class ProjectServlet
 			
 			output = "<head>" + meta_1 + meta_2 + boostrap_link_2 +  script_1 + script_2 + "</head>" + header + "<div class='container'><table border='1' style='text-align:center;'><tr>"
 			+ "<th style='padding:10px; text-align:center;'>Project Code</th>"
-			+ "<th style='padding:10px; text-align:center;'>Project Name</th>" +
-			"<th style='padding:10px; text-align:center;'>Project Description</th>" + 
-			"<th style='padding:10px; text-align:center;'>Project Developed By</th>" + 
-			"<th style='padding:10px; text-align:center;'>Project Price</th>" +
-			"<th style='padding:10px; text-align:center;'>Project Category</th>" +
-			"<th style='padding:10px; text-align:center;'>Project Service Charge</th>"+
-			"<th style='padding:10px; text-align:center;'>Add to cart</th>";
+			+ "<th style='padding:10px; text-align:center;'>Project Name</th>" 
+			+ "<th style='padding:10px; text-align:center;'>Project Description</th>" 
+			+ "<th style='padding:10px; text-align:center;'>Project Developed By</th>" 
+			+ "<th style='padding:10px; text-align:center;'>Project Price</th>" 
+			+ "<th style='padding:10px; text-align:center;'>Project Category</th>" 
+			+ "<th style='padding:10px; text-align:center;'>Project Service Charge</th>"
+			+ "<th style='padding:10px; text-align:center;'>Add to cart</th>";
 			
 			//+
 			//"<th>Update</th><th>Remove</th></tr>"; 
